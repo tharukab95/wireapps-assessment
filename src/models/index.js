@@ -23,6 +23,6 @@ db.sequelize = sequelize;
 
 db.users = require("./userModel")(sequelize, DataTypes);
 db.inventory = require("./inventoryModel")(sequelize, DataTypes);
-db.inventory = require("./customerModel")(sequelize, DataTypes);
+db.customers = require("./customerModel")(sequelize, DataTypes);
 
 module.exports = db;

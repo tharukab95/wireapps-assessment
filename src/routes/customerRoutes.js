@@ -1,37 +1,37 @@
 const express = require("express");
 const router = express.Router();
-const inventoryController = require("../controllers/inventoryController");
+const customerController = require("../controllers/customerController");
 const { verifyJWT } = require("../middlewares/verifyJWT");
 const { verifyRoles } = require("../middlewares/verifyRoles");
 
-router.get("/", verifyJWT, inventoryController.getAllInventoryRecords);
+router.get("/", verifyJWT, customerController.getAllCustomers);
 
 router.post(
   "/",
   verifyJWT,
   verifyRoles(["owner"]),
-  inventoryController.addInventoryRecord
+  customerController.createCustomer
 );
 
 router.put(
   "/:id",
   verifyJWT,
   verifyRoles(["owner", "manager", "cashier"]),
-  inventoryController.updateInventoryRecord
+  customerController.updateCustomer
 );
 
 router.delete(
   "/:id/hard-delete",
   verifyJWT,
   verifyRoles(["owner"]),
-  inventoryController.hardDeleteInventoryRecord
+  customerController.hardDeleteCustomer
 );
 
 router.delete(
   "/:id",
   verifyJWT,
   verifyRoles(["owner", "manager"]),
-  inventoryController.softDeleteInventoryRecord
+  customerController.softDeleteCustomer
 );
 
 module.exports = router;

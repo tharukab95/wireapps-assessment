@@ -7,6 +7,7 @@ const db = require("./src/models");
 
 const authRoutes = require("./src/routes/authRoutes");
 const inventoryRoutes = require("./src/routes/inventoryRoutes");
+const customerRoutes = require("./src/routes/customerRoutes");
 
 require("dotenv").config();
 
@@ -55,6 +56,7 @@ app.use(function (req, res, next) {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/inventory", inventoryRoutes);
+app.use("/api/customer", customerRoutes);
 
 const PORT = process.env.PORT || 4000;
 
